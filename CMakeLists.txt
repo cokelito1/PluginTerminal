@@ -7,6 +7,9 @@ include_directories("plugins/include")
 add_definitions("-rdynamic -ldl -lcpr")
 set (CMAKE_CXX_STANDARD 17)
 
+set(USE_SYSTEM_CURL "ON")
+set(BUILD_CPR_TESTS "OFF")
+
 set(CPACK_PACKAGE_VERSION_MAJOR "0")
 set(CPACK_PACKAGE_VERSION_MINOR "0")
 set(CPACK_PACKAGE_VERSION_PATCH "0")

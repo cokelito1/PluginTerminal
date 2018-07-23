@@ -1,18 +1,12 @@
 #include <iostream>
 #include "PingPlugin.hpp"
 
-void ping(PluginBase& plugin, std::vector<std::string> args) {
-  std::cout << "[" << plugin.GetName() << "]: Pong" << std::endl;
-}
-
-void exitProgram(PluginBase& plugin, std::vector<std::string> args) {
-  std::cout << "[" << plugin.GetName() << "]: Saliendo" << std::endl;
-  exit(0);
+void PingPlugin::ping(std::vector<std::string> args) {
+  std::cout << "[" << GetName() << "]: Pong" << std::endl;
 }
 
 PingPlugin::PingPlugin() : PluginBase(){
-  PutCommand(std::pair<std::string, cmd>("ping", &ping));
-  PutCommand(std::pair<std::string, cmd>("exit", &exitProgram));
+  PutCommand(std::pair<std::string, cmd>("ping", (void (PluginBase::*)(std::vector<std::string>)) &PingPlugin::ping));
 }
 
 PingPlugin::~PingPlugin() { }
@@ -26,7 +20,7 @@ CommandList PingPlugin::GetCommandList() {
 }
 
 void PingPlugin::ExecuteCommand(std::string CommandName, std::vector<std::string> args) {
-  PluginCommandList[CommandName](*this, args);
+  (this->*PluginCommandList[CommandName])(args);
 }
 
 void PingPlugin::PutCommand(std::pair<std::string, cmd> Command) {

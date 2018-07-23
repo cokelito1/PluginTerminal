@@ -5,7 +5,6 @@
 #include <vector>
 #include <PluginBase.hpp>
 
-void echo(PluginBase&, std::vector<std::string> args);
 
 class EchoPlugin : public PluginBase{
 public:
@@ -18,6 +17,7 @@ public:
   void ExecuteCommand(std::string CommandName, std::vector<std::string> args);
 private:
   void PutCommand(std::pair<std::string, cmd> Command);
+  void echo(std::vector<std::string> args);
 
   std::string PluginName = "Echo Plugin";
 };

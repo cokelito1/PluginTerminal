@@ -7,7 +7,7 @@
 
 class PluginBase;
 
-typedef void (*cmd)(PluginBase &, std::vector<std::string> args);
+typedef void (PluginBase::*cmd)(std::vector<std::string> args);
 typedef std::map<std::string, cmd> CommandList;
 
 class PluginBase {

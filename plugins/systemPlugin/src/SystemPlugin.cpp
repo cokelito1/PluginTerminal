@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 
-void System(PluginBase& plugin, std::vector<std::string> args) {
+void SystemPlugin::System(std::vector<std::string> args) {
   std::string systemCommand = "";
   for(int i=1; i<args.size(); i++) {
     systemCommand.append(args[i]);
@@ -14,7 +14,7 @@ void System(PluginBase& plugin, std::vector<std::string> args) {
 }
 
 SystemPlugin::SystemPlugin() : PluginBase() {
-  PutCommand(std::pair<std::string, cmd>("system", &System));
+  PutCommand(std::pair<std::string, cmd>("system", (void (PluginBase::*)(std::vector<std::string>))&SystemPlugin::System));
 }
 
 SystemPlugin::~SystemPlugin() { }
@@ -28,7 +28,7 @@ CommandList SystemPlugin::GetCommandList() {
 }
 
 void SystemPlugin::ExecuteCommand(std::string CommandName, std::vector<std::string> args) {
-  PluginCommandList[CommandName](*this, args);
+  (this->*PluginCommandList[CommandName])(args);
 }
 
 void SystemPlugin::PutCommand(std::pair<std::string, cmd> Command) {

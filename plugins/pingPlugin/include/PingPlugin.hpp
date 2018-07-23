@@ -6,8 +6,6 @@
 
 #include <PluginBase.hpp>
 
-void ping(PluginBase&, std::vector<std::string> args);
-void exitProgram(PluginBase&, std::vector<std::string> args);
 
 class PingPlugin : public PluginBase {
 public:
@@ -20,6 +18,8 @@ public:
   void ExecuteCommand(std::string CommandName, std::vector<std::string> args);
 private:
   void PutCommand(std::pair<std::string, cmd> Command);
+  void ping(std::vector<std::string> args);
+  void exitProgram(std::vector<std::string> args);
 
   std::string PluginName = "Ping Plugin";
 };

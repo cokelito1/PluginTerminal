@@ -2,7 +2,6 @@
 #include <vector>
 #include <iostream>
 
-void System(PluginBase&, std::vector<std::string> args);
 
 class SystemPlugin : public PluginBase {
 public:
@@ -15,6 +14,7 @@ public:
   void ExecuteCommand(std::string CommandName, std::vector<std::string> args);
 private:
   std::string PluginName = "System Plugin";
+  void System(std::vector<std::string> args);
 
   void PutCommand(std::pair<std::string, cmd> Command);
 };

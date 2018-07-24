@@ -15,6 +15,7 @@ public:
 private:
   std::string PluginName = "System Plugin";
   void System(std::vector<std::string> args);
+  void Shell(std::vector<std::string> args);
 
   void PutCommand(std::pair<std::string, cmd> Command);
 };

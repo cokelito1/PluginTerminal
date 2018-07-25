@@ -287,9 +287,9 @@ std::string NekoPlugin::GetCuddle() {
 }
 
 NekoPlugin::NekoPlugin() : PluginBase() {
-  PutCommand(std::pair<std::string, cmd>("nsfw", (void (PluginBase::*)(std::vector<std::string>))&NekoPlugin::NSFW));
-  PutCommand(std::pair<std::string, cmd>("sfw", (void (PluginBase::*)(std::vector<std::string>))&NekoPlugin::SFW));
-  PutCommand(std::pair<std::string, cmd>("why", (void (PluginBase::*)(std::vector<std::string>))&NekoPlugin::WHY));
+  PutCommand(std::pair<std::string, cmd>("nsfw", (cmd)&NekoPlugin::NSFW));
+  PutCommand(std::pair<std::string, cmd>("sfw", (cmd)&NekoPlugin::SFW));
+  PutCommand(std::pair<std::string, cmd>("why", (cmd)&NekoPlugin::WHY));
 
   EndPoints["RandomHentaiGif"] = "img/Random_hentai_gif";
   EndPoints["Pussy"] = "img/pussy";

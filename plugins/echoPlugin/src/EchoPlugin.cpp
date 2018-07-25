@@ -15,7 +15,7 @@ void EchoPlugin::echo(std::vector<std::string> args) {
 }
 
 EchoPlugin::EchoPlugin() : PluginBase(){
-  PutCommand(std::pair<std::string, cmd>("echo", (void (PluginBase::*)(std::vector<std::string>))&EchoPlugin::echo));
+  PutCommand(std::pair<std::string, cmd>("echo", (cmd)&EchoPlugin::echo));
 }
 
 EchoPlugin::~EchoPlugin() {}

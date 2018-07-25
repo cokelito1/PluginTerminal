@@ -18,8 +18,8 @@ void SystemPlugin::Shell(std::vector<std::string> args) {
 }
 
 SystemPlugin::SystemPlugin() : PluginBase() {
-  PutCommand(std::pair<std::string, cmd>("system", (void (PluginBase::*)(std::vector<std::string>))&SystemPlugin::System));
-  PutCommand(std::pair<std::string, cmd>("shell", (void (PluginBase::*)(std::vector<std::string>))&SystemPlugin::Shell));
+  PutCommand(std::pair<std::string, cmd>("system", (cmd)&SystemPlugin::System));
+  PutCommand(std::pair<std::string, cmd>("shell", (cmd)&SystemPlugin::Shell));
 }
 
 SystemPlugin::~SystemPlugin() { }

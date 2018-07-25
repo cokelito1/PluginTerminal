@@ -6,7 +6,7 @@ void PingPlugin::ping(std::vector<std::string> args) {
 }
 
 PingPlugin::PingPlugin() : PluginBase(){
-  PutCommand(std::pair<std::string, cmd>("ping", (void (PluginBase::*)(std::vector<std::string>)) &PingPlugin::ping));
+  PutCommand(std::pair<std::string, cmd>("ping", (cmd) &PingPlugin::ping));
 }
 
 PingPlugin::~PingPlugin() { }

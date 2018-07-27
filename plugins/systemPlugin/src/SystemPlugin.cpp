@@ -1,11 +1,11 @@
 #include <PluginBase.hpp>
 #include <SystemPlugin.hpp>
 
-#include <stdlib.h>
+#include <cstdlib>
 
 void SystemPlugin::System(std::vector<std::string> args) {
   std::string systemCommand = "";
-  for(int i=1; i<args.size(); i++) {
+  for(unsigned int i=1; i<args.size(); i++) {
     systemCommand.append(args[i]);
     systemCommand.append(" ");
   }

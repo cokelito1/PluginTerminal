@@ -3,6 +3,7 @@
 
 #include <string>
 #include <array>
+#include <vector>
 #include <cstdint>
 
 class BfInterpreter {
@@ -18,7 +19,7 @@ public:
 private:
   std::string code;
   std::array<uint8_t, 300000> memory;
-  std::array<uint32_t, 300000> jumpTable;
+  std::vector<uint32_t> jumpTable;
 
   uint32_t PC;
   uint32_t SP;

@@ -19,7 +19,7 @@ void BfInterpreter::setCode(std::string code) {
 }
 
 void BfInterpreter::clearMemory() {
-  for(int i=0; i<jumpTable.size(); i++) {
+  for(unsigned int i=0; i<jumpTable.size(); i++) {
     jumpTable[i] = 0;
     memory[i] = 0;
   }
@@ -28,6 +28,7 @@ void BfInterpreter::clearMemory() {
 }
 
 void BfInterpreter::translateJumps() {
+  jumpTable.resize(code.size());
   std::stack<uint32_t> OpenBrack;
   int bracketNesting = 0;
   char ins;
@@ -79,7 +80,7 @@ void BfInterpreter::execute() {
         std::cout.put((char) memory[SP]);
         break;
       case ',':
-        memory[SP] = std::cin.get();
+        std::cin >> memory[SP];
         break;
       case '[':
         if(memory[SP] == 0) {

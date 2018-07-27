@@ -4,7 +4,7 @@ project(CTerminal)
 include_directories("include")
 include_directories("plugins/include")
 
-add_definitions("-rdynamic -ldl -lcpr")
+add_definitions("-rdynamic -ldl -lcpr -Wall")
 set (CMAKE_CXX_STANDARD 17)
 
 set(USE_SYSTEM_CURL "ON")

@@ -23,10 +23,14 @@ int main() {
   vector<string> plugins;
   vector<void *> handlers;
 
-  for(auto &p : fs::directory_iterator("./plugins")) {
-    if(fs::path(p).extension() == ".so") {
-      plugins.push_back(p.path().u8string());
-    }
+  if(fs::exists("./plugins")) {
+      for (auto &p : fs::directory_iterator("./plugins")) {
+          if (fs::path(p).extension() == ".so") {
+              plugins.push_back(p.path().u8string());
+          }
+      }
+  } else {
+      std::cout << "Carpeta plugins no encontrada" << std::endl;
   }
 
   for(auto p : plugins) {

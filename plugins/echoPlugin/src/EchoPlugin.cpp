@@ -7,7 +7,7 @@ void EchoPlugin::echo(std::vector<std::string> args) {
     std::cerr << "Menos de 1 arg no aceptado" << std::endl;
   } else {
     std::cout << "[" << GetName() << "] ";
-    for(int i = 1; i < args.size(); i++) {
+    for(unsigned int i = 1; i < args.size(); i++) {
       std::cout << args[i] << " ";
     }
     std::cout << std::endl;

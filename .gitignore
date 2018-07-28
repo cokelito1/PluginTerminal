@@ -33,3 +33,5 @@
 
 build/
 .idea/
+Docs/
+cmake-build-debug/

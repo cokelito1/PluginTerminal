@@ -1,0 +1,9 @@
+[
+    {
+        "name": "GCC 8.1 Release",
+        "compilers": {
+            "CXX": "/usr/bin/g++",
+            "CC": "/usr/bin/gcc"
+        }
+    }
+]

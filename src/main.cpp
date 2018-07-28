@@ -17,7 +17,6 @@ void printHelp(map<string, PluginBase *> commands) {
 
 int main() {
   map<string, PluginBase *> commands;
-
   map<PluginBase *, void (*)(PluginBase*)> Destructors;
 
   vector<string> plugins;
@@ -43,9 +42,18 @@ int main() {
     handlers.push_back(hndl);
 
     PluginBase *(*createObj)() = (PluginBase *(*)()) dlsym(hndl, "create");
-    void (*removeObj)(PluginBase*) = (void (*)(PluginBase*)) dlsym(hndl, "removePlugin");
-    PluginBase *plugin = createObj();
+    if(createObj == NULL) {
+      cout << "Error cargando create en " << p.c_str() << " causa " << dlerror() << endl;
+      return -1;
+    }
 
+    void (*removeObj)(PluginBase*) = (void (*)(PluginBase*)) dlsym(hndl, "removePlugin");
+    if(removeObj == NULL) {
+      cout << "Error cargando removePlugin en " << p.c_str() << " causa " << dlerror() << endl;
+      return -1;
+    }
+
+    PluginBase *plugin = createObj();
     Destructors.insert(pair<PluginBase *, void (*)(PluginBase*)>(plugin, removeObj));
 
     for(auto i : plugin->GetCommandList()) {
